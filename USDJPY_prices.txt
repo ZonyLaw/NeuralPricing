@@ -1,0 +1,2 @@
+Realtime Currency Exchange Rate.1. From_Currency Code	Realtime Currency Exchange Rate.2. From_Currency Name	Realtime Currency Exchange Rate.3. To_Currency Code	Realtime Currency Exchange Rate.4. To_Currency Name	Realtime Currency Exchange Rate.5. Exchange Rate	Realtime Currency Exchange Rate.6. Last Refreshed	Realtime Currency Exchange Rate.7. Time Zone	Realtime Currency Exchange Rate.8. Bid Price	Realtime Currency Exchange Rate.9. Ask Price
+USD	United States Dollar	JPY	Japanese Yen	149.63900000	2023-11-17 22:29:03	UTC	149.63420000	149.64520000
