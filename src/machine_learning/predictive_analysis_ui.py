@@ -34,12 +34,12 @@ def predict_binary_output(X_live, model_features, churn_pipeline_dc_fe, churn_pi
 def predict_profits(X_live, model_feature, model_pipeline, model_label_map):
 
     category_phrase = {
-        '-25<': 'more than 25',
-        '-20': 'around 20',
-        '-5': 'arount 5',
-        '5': 'around 5',
-        '20': 'around 20',
-        '>25': 'more than 25'
+        '-25<': 'Sell with >25 pips target',
+        '-20': 'Sell with 20 pips target',
+        '-5': 'Sell with 5 pips target',
+        '5': 'Buy with 5 pips target',
+        '20': 'Buy with 20 pips target',
+        '>25': 'Buy with >25 pips target'
     }
     
     # from live data, subset features related to this pipeline
@@ -54,14 +54,46 @@ def predict_profits(X_live, model_feature, model_pipeline, model_label_map):
     proba = model_prediction_proba[0, model_prediction][0]*100
     category_labels = model_label_map[model_prediction[0]]
 
+
+    # output the entire array    
+    proba1 = model_prediction_proba[0, 0]*100
+    category_labels1 = model_label_map[0]
+    proba2 = model_prediction_proba[0, 1]*100
+    category_labels2 = model_label_map[1]
+    proba3 = model_prediction_proba[0, 2]*100
+    category_labels3 = model_label_map[2]
+    proba4 = model_prediction_proba[0, 3]*100
+    category_labels4 = model_label_map[3]
+    proba5 = model_prediction_proba[0, 4]*100
+    category_labels5 = model_label_map[4]
+    proba6 = model_prediction_proba[0, 5]*100
+    category_labels6 = model_label_map[5]
+
+   
+    print( model_prediction_proba[0,0]*100)
+
     
     statement = (
         f"* If you are in this trade, there is a {proba.round(2)}% probability the profit can "
         f"reach **{category_phrase[category_labels]} pips**.\n\n"
+        
+        f"-------------------------------All statistics-------------------------------\n\n"
+        
+        f"* If you are in this trade, there is a {proba1.round(2)}% probability the profit can "
+        f"reach **{category_phrase[category_labels1]} pips**.\n\n"
+        f"* If you are in this trade, there is a {proba2.round(2)}% probability the profit can "
+        f"reach **{category_phrase[category_labels2]} pips**.\n\n"
+        f"* If you are in this trade, there is a {proba3.round(2)}% probability the profit can "
+        f"reach **{category_phrase[category_labels3]} pips**.\n\n"
+        f"* If you are in this trade, there is a {proba4.round(2)}% probability the profit can "
+        f"reach **{category_phrase[category_labels4]} pips**.\n\n"
+        f"* If you are in this trade, there is a {proba5.round(2)}% probability the profit can "
+        f"reach **{category_phrase[category_labels5]} pips**.\n\n"
+        f"* If you are in this trade, there is a {proba6.round(2)}% probability the profit can "
+        f"reach **{category_phrase[category_labels6]} pips**.\n\n"
+
     )
     
-    if proba < 50:
-        statement += f"* With this **low** probability, please consider exiting, reducing your holding, or reducing your target!"
 
     st.write(statement)
 
