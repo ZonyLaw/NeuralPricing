@@ -89,26 +89,27 @@ def DrawInputsWidgets():
     X_live[feature] = st_widget
 
     with col2:
-        feature = 'trend_strength_1'
+        feature = 'up_bb20_low_bb20_diff_1'
         st_widget = st.number_input(
             label=feature,
             value=df[feature].iloc[1],  # Set a default value if needed
+            min_value=df[feature].min(),
+            max_value=df[feature].max(),
+            step=0.1
+        )
+    X_live[feature] = st_widget
+    
+    with col3:
+        feature = 'trend_strength_1'
+        st_widget = st.number_input(
+            label=feature,
+            value=df[feature].iloc[2],  # Set a default value if needed
             min_value=df[feature].min(),
             max_value=df[feature].max(),
             step=1
         )
     X_live[feature] = st_widget
 
-    with col3:
-        feature = 'up_bb20_low_bb20_diff_1'
-        st_widget = st.number_input(
-            label=feature,
-            value=df[feature].iloc[2],  # Set a default value if needed
-            min_value=df[feature].min(),
-            max_value=df[feature].max(),
-            step=0.1
-        )
-    X_live[feature] = st_widget
 
     with col4:
         feature = 'hr'
